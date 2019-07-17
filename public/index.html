@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- UIkit CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/css/uikit.min.css"
+    />
+
+    <!-- UIkit JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/js/uikit-icons.min.js"></script>
+
+    
+  </head>
+
+  <body>
+    <canvas id="myChart" width="400"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <script>
+      (async () => {
+        const ctx = document.getElementById("myChart").getContext("2d");
+        const data = await fetch("/api/stats/7day")
+          .then(function(response) {
+            return response.json();
+          })
+        const myLineChart = new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: data.map(o => moment(o.ts).format('ddd')),
+            datasets: [
+              {
+                label: "My First Dataset",
+                data: data.map(o => o.tasks),
+                fill: false,
+                borderColor: "rgb(75, 192, 192)",
+                lineTension: 0.1
+              }
+            ]
+          }
+          //options: options
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "things-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gbougakov/things-server.git"
+  },
+  "author": "George Bougakov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gbougakov/things-server/issues"
+  },
+  "homepage": "https://github.com/gbougakov/things-server#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "lowdb": "^1.0.0",
+    "moment": "^2.24.0",
+    "node-cron": "^2.0.3",
+    "sqlite3": "^4.0.9"
+  }
+}
